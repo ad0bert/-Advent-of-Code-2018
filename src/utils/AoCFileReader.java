@@ -23,4 +23,23 @@ public class AoCFileReader {
         }
         return res;
     }
+
+    public static List<List<String>> readListOfCharList(File f) {
+        List<List<String>> res = new ArrayList<List<String>>();
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                List<String> charLine = new ArrayList<String>();
+                for (char c : line.toCharArray()) {
+                    charLine.add(String.valueOf(c));
+                }
+                res.add(charLine);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
 }
