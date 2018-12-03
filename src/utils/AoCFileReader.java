@@ -42,4 +42,19 @@ public class AoCFileReader {
         }
         return res;
     }
+
+    public static List<Day3CoordinateEntry> readCoordinateList(File f) {
+        List<Day3CoordinateEntry> res = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                res.add(new Day3CoordinateEntry(line));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
 }

@@ -1,4 +1,4 @@
-package main.day1;
+package main.day01;
 
 import java.io.File;
 import java.util.HashSet;
@@ -8,9 +8,9 @@ import java.util.Set;
 import main.AbstractSolver;
 import utils.AoCFileReader;
 
-public class Day1Solver extends AbstractSolver {
+public class DaySolver extends AbstractSolver {
 
-    public Day1Solver(String day) {
+    public DaySolver(String day) {
         super(day);
     }
 
