@@ -57,4 +57,19 @@ public class AoCFileReader {
         }
         return res;
     }
+
+    public static List<Day4DateTimeString> readGuardTimes(File f) {
+        List<Day4DateTimeString> res = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                res.add(new Day4DateTimeString(line));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
 }
