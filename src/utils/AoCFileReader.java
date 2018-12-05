@@ -72,4 +72,17 @@ public class AoCFileReader {
         }
         return res;
     }
+
+    public static String readOneLine(File f) {
+        String line = "";
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            line = br.readLine();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return line;
+    }
 }
