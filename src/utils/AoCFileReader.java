@@ -85,4 +85,20 @@ public class AoCFileReader {
         }
         return line;
     }
+
+    public static List<Day6Point> readPointList(File f) {
+        List<Day6Point> res = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line;
+            char c = 'A';
+            while ((line = br.readLine()) != null) {
+                res.add(new Day6Point(line, c++));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
 }
