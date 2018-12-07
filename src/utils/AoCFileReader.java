@@ -101,4 +101,30 @@ public class AoCFileReader {
         }
         return res;
     }
+
+    public static List<Day7Node> readNodeSet(File f) {
+        List<Day7Node> res = new ArrayList<>();
+        char c = 'A';
+        for (int i = 0; i < 26; ++i) {
+            res.add(new Day7Node(c++));
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                Day7Node node = new Day7Node(line);
+                if (res.contains(node)) {
+                    int idx = res.indexOf(node);
+                    res.get(idx).preConditions.addAll(node.preConditions);
+                } else {
+                    res.add(new Day7Node(line));
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
 }
