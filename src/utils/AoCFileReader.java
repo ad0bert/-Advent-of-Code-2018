@@ -8,6 +8,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.day03.Day3CoordinateEntry;
+import main.day04.Day4DateTimeString;
+import main.day06.Day6Point;
+import main.day07.Day7Node;
+
 public class AoCFileReader {
     public static List<Integer> readIntegerLineVertical(File f) {
         List<Integer> res = new ArrayList<Integer>();

@@ -1,4 +1,4 @@
-package utils;
+package main.day06;
 
 public class Day6Point {
     public int x, y;

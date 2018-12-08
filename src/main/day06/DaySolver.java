@@ -8,7 +8,6 @@ import java.util.Map.Entry;
 
 import main.AbstractSolver;
 import utils.AoCFileReader;
-import utils.Day6Point;
 
 public class DaySolver extends AbstractSolver {
 

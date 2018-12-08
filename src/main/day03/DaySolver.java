@@ -7,7 +7,6 @@ import java.util.TreeSet;
 
 import main.AbstractSolver;
 import utils.AoCFileReader;
-import utils.Day3CoordinateEntry;
 
 public class DaySolver extends AbstractSolver {
 

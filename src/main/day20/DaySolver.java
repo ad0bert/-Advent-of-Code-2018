@@ -4,8 +4,8 @@ import java.io.File;
 import java.util.List;
 
 import main.AbstractSolver;
+import main.day03.Day3CoordinateEntry;
 import utils.AoCFileReader;
-import utils.Day3CoordinateEntry;
 
 public class DaySolver extends AbstractSolver {
 

@@ -6,8 +6,6 @@ import java.util.List;
 
 import main.AbstractSolver;
 import utils.AoCFileReader;
-import utils.Day7Node;
-import utils.Day7Worker;
 
 public class DaySolver extends AbstractSolver {
 

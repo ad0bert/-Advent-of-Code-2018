@@ -1,4 +1,4 @@
-package utils;
+package main.day04;
 
 import java.time.LocalDateTime;
 

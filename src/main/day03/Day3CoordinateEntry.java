@@ -1,4 +1,4 @@
-package utils;
+package main.day03;
 
 public class Day3CoordinateEntry {
 

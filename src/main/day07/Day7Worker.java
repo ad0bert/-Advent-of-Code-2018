@@ -1,4 +1,4 @@
-package utils;
+package main.day07;
 
 public class Day7Worker {
 

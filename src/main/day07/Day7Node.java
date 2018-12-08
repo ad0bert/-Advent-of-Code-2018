@@ -1,4 +1,4 @@
-package utils;
+package main.day07;
 
 import java.util.Set;
 import java.util.TreeSet;
