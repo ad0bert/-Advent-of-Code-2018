@@ -1,10 +1,10 @@
 package main.day09;
 
 import java.io.File;
+import java.util.LinkedList;
 import java.util.List;
 
 import main.AbstractSolver;
-import main.day03.Day3CoordinateEntry;
 import utils.AoCFileReader;
 
 public class DaySolver extends AbstractSolver {
@@ -15,16 +15,95 @@ public class DaySolver extends AbstractSolver {
 
     @Override
     public void solvePart1() {
-        List<Day3CoordinateEntry> input = AoCFileReader.readCoordinateList(new File(this.inputFile1));
+        List<String> input = AoCFileReader.readMulitpleLines(new File(this.inputFile1));
 
-        System.out.println(input);
+        long res = 0;
+
+        for (String line : input) {
+            String reduced = line.replaceFirst(" players; last marble is worth ", " ");
+            reduced = reduced.replaceFirst(" points", "");
+            String[] in = reduced.split(" ");
+            // System.out.println(line + ": high score is " +
+            // runGame(Integer.parseInt(in[0]), Integer.parseInt(in[1])));
+            res = runGame(Integer.parseInt(in[0]), Integer.parseInt(in[1]));
+        }
+        System.out.println(res);
     }
 
     @Override
     public void solvePart2() {
-        List<Day3CoordinateEntry> input = AoCFileReader.readCoordinateList(new File(this.inputFile2));
+        List<String> input = AoCFileReader.readMulitpleLines(new File(this.inputFile2));
+        long res = 0;
+        for (String line : input) {
+            String reduced = line.replaceFirst(" players; last marble is worth ", " ");
+            reduced = reduced.replaceFirst(" points", "");
+            String[] in = reduced.split(" ");
+            // System.out.println(
+            // line + ": high score is " +
+            // runGameOwnList(Integer.parseInt(in[0]),
+            // Integer.parseInt(in[1])));
+            res = runGameOwnList(Integer.parseInt(in[0]), Integer.parseInt(in[1]));
+        }
+        System.out.println(res);
+    }
 
-        System.out.println(input);
+    private int runGame(int playerCnt, int maxNumber) {
+        List<Integer> game = new LinkedList<>();
+        int[] players = new int[playerCnt];
+        int currPlayer = 0;
+        int currPos = 0;
+        game.add(0);
+        for (int i = 1; i <= maxNumber; ++i) {
+            if ((i % 23) == 0) {
+                players[currPlayer] += i;
+                currPos -= 7;
+                if (currPos < 0) {
+                    currPos = game.size() + currPos;
+                }
+                players[currPlayer] += game.get(currPos);
+                game.remove(currPos);
+            } else {
+                currPos = (currPos + 2) % game.size();
+                if (currPos != 0) {
+                    game.add(currPos, i);
+                } else {
+                    game.add(i);
+                    currPos = game.size() - 1;
+                }
+            }
+            currPlayer = (currPlayer + 1) % players.length;
+        }
+
+        int max = Integer.MIN_VALUE;
+        for (int player : players) {
+            if (max < player) {
+                max = player;
+            }
+        }
+        return max;
+    }
+
+    private long runGameOwnList(int playerCnt, int maxNumber) {
+        Day9List game = new Day9List();
+        long[] players = new long[playerCnt];
+        int currPlayer = 0;
+        game.add(0);
+        for (int i = 1; i <= maxNumber; ++i) {
+
+            if ((i % 23) == 0) {
+                players[currPlayer] += (game.replace7() + i);
+            } else {
+                game.add2(i);
+            }
+            currPlayer = (currPlayer + 1) % players.length;
+        }
+        long max = Integer.MIN_VALUE;
+        for (long player : players) {
+            if (max < player) {
+                max = player;
+            }
+        }
+        return max;
     }
 
 }

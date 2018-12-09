@@ -91,6 +91,21 @@ public class AoCFileReader {
         return line;
     }
 
+    public static List<String> readMulitpleLines(File f) {
+        List<String> lines = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                lines.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return lines;
+    }
+
     public static List<Day6Point> readPointList(File f) {
         List<Day6Point> res = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(f))) {
