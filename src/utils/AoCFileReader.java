@@ -12,6 +12,7 @@ import main.day03.Day3CoordinateEntry;
 import main.day04.Day4DateTimeString;
 import main.day06.Day6Point;
 import main.day07.Day7Node;
+import main.day10.Day10Point;
 
 public class AoCFileReader {
     public static List<Integer> readIntegerLineVertical(File f) {
@@ -145,6 +146,23 @@ public class AoCFileReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return res;
+    }
+
+    public static List<Day10Point> readPointVelList(File f) {
+        List<Day10Point> res = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                res.add(new Day10Point(line));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return res;
     }
 }

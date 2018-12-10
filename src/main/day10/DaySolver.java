@@ -1,10 +1,10 @@
 package main.day10;
 
+import java.awt.EventQueue;
 import java.io.File;
 import java.util.List;
 
 import main.AbstractSolver;
-import main.day03.Day3CoordinateEntry;
 import utils.AoCFileReader;
 
 public class DaySolver extends AbstractSolver {
@@ -15,16 +15,22 @@ public class DaySolver extends AbstractSolver {
 
     @Override
     public void solvePart1() {
-        List<Day3CoordinateEntry> input = AoCFileReader.readCoordinateList(new File(this.inputFile1));
+        List<Day10Point> input = AoCFileReader.readPointVelList(new File(this.inputFile1));
+        // Modified point drawing from
+        // http://zetcode.com/gfx/java2d/basicdrawing/
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
 
-        System.out.println(input);
+                PointsEx ex = new PointsEx(input);
+                ex.setVisible(true);
+            }
+        });
     }
 
     @Override
     public void solvePart2() {
-        List<Day3CoordinateEntry> input = AoCFileReader.readCoordinateList(new File(this.inputFile2));
 
-        System.out.println(input);
     }
 
 }
