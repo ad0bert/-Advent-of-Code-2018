@@ -6,7 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import main.day03.Day3CoordinateEntry;
 import main.day04.Day4DateTimeString;
@@ -156,6 +158,23 @@ public class AoCFileReader {
             String line;
             while ((line = br.readLine()) != null) {
                 res.add(new Day10Point(line));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    public static Map<String, Character> readStringMap(File f) {
+        Map<String, Character> res = new HashMap<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                res.put(line.split(" => ")[0], line.split(" => ")[1].charAt(0));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
