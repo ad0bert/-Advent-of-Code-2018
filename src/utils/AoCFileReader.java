@@ -15,6 +15,7 @@ import main.day04.Day4DateTimeString;
 import main.day06.Day6Point;
 import main.day07.Day7Node;
 import main.day10.Day10Point;
+import main.day16.TestSample;
 
 public class AoCFileReader {
     public static List<Integer> readIntegerLineVertical(File f) {
@@ -182,6 +183,51 @@ public class AoCFileReader {
             e.printStackTrace();
         }
 
+        return res;
+    }
+
+    public static List<TestSample> readTestSamples(File f) {
+        List<TestSample> res = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                TestSample ts = new TestSample();
+                ts.setBefore(line);
+                line = br.readLine();
+                ts.setOperations(line);
+                line = br.readLine();
+                ts.setAfter(line);
+                res.add(ts);
+                line = br.readLine();
+                if (line == null) {
+                    break;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public static List<int[]> readProgram(File f) {
+        List<int[]> res = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] split = line.split(" ");
+                int[] pLine = new int[split.length];
+                for (int i = 0; i < split.length; ++i) {
+                    pLine[i] = Integer.parseInt(split[i]);
+                }
+                res.add(pLine);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return res;
     }
 
