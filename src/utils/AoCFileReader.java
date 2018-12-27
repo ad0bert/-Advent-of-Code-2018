@@ -16,6 +16,7 @@ import main.day06.Day6Point;
 import main.day07.Day7Node;
 import main.day10.Day10Point;
 import main.day16.TestSample;
+import main.day17.Day17Line;
 
 public class AoCFileReader {
     public static List<Integer> readIntegerLineVertical(File f) {
@@ -169,6 +170,23 @@ public class AoCFileReader {
         return res;
     }
 
+    public static List<Day17Line> readLineList(File f) {
+        List<Day17Line> res = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                res.add(new Day17Line(line));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+    
     public static Map<String, Character> readStringMap(File f) {
         Map<String, Character> res = new HashMap<>();
 

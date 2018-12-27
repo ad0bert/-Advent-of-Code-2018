@@ -40,6 +40,7 @@ public class DaySolver extends AbstractSolver {
         System.out.println(res);
     }
 
+    @SuppressWarnings("unlikely-arg-type")
     @Override
     public void solvePart2() {
         List<TestSample> input = AoCFileReader.readTestSamples(new File(this.inputFile1));
