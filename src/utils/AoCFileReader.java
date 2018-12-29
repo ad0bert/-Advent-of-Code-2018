@@ -249,4 +249,19 @@ public class AoCFileReader {
         return res;
     }
 
+    public static List<String[]> readProgramLines(File f) {
+        List<String[]> res = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                res.add(line.split(" "));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+    
 }
